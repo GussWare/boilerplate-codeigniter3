@@ -6,7 +6,7 @@
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /codeigniter-mundial-football/
+    RewriteBase /boilerplate-codeigniter3/
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.php?/$1 [L] 
@@ -14,7 +14,8 @@
 </IfModule>
     
 SetEnv CI_ENV development
-SetEnv CI_DOMINIO_APLICACION "http://localhost/codeigniter-mundial-football/"
+SetEnv CI_DOMINIO_APLICACION "http://localhost/boilerplate-codeigniter3/"
+SetEnv CI_ENCRIPTION_KEY "345678JHGFDWOLVC89QASXCjhgjkuytghjk9876"
   
 
 <IfModule !mod_rewrite.c>

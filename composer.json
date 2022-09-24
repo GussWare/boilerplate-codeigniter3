@@ -13,7 +13,10 @@
 	"require": {
 		"php": ">=5.3.7",
 		"lukasoppermann/http-status": "^3.2",
-		"shrikeh/teapot": "^2.3"
+		"shrikeh/teapot": "^2.3",
+		"symfony/password-hasher": "^6.0",
+		"tecnickcom/tcpdf": "^6.5",
+		"setasign/fpdf": "^1.8"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

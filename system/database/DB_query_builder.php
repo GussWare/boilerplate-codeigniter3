@@ -2534,7 +2534,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 	 * @param	object
 	 * @return	array
 	 */
-	protected function _object_to_array($object)
+	public function _object_to_array($object)
 	{
 		if ( ! is_object($object))
 		{

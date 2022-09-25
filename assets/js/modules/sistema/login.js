@@ -1,41 +1,43 @@
-var LoginClass = (function($) {
+var LoginClass = (function ($) {
 
-    var _self = this;
-    var FORM = '#form_login';
+    var _this = this;
+    var FORM = '#form-login';
 
     this.initForm = function initForm(params) {
         $(FORM).validate(params.form);
     }
 
-    this.login = function login() {
+    this.login = function login(e) {
+        e.preventDefault();
+
+        var url = $(FORM).attr("action");
         var validate = $(FORM).valid();
-        if (validate) {
-            var params = {
-                dataType: "json",
-                resetForm: true,
-                success: _self.successForm,
-                error: _self.errorForm
-            };
-            $(FORM).ajaxForm(params);
-            $(FORM).submit();
+
+        if (!validate) {
+            return false;
         }
+
+        var data = $(FORM).serialize();
+
+        base.ajax(url, data, _this.successForm, _this.errorForm);
     }
 
-    this.successForm = function successForm(response, status, xhr, form) {
-        console.log(response);
-        console.log(status);
-        console.log(xhr);
-        console.log(form);
+    this.successForm = function successForm(response) {
+        base.irDashboard();
     }
 
-    this.errorForm = function errorForm(response, status, xhr, form) {
-        console.log(response);
-        console.log(status);
-        console.log(xhr);
-        console.log(form);
+    this.errorForm = function errorForm(xhr, status, error) {
+        var messages = [];
+
+        try {
+            var response = JSON.parse(xhr.responseText);
+            messages = response["messages"];
+        } catch (error) {
+            messages = [base.TEXT_ERROR_GENERIC];
+        }
+
+        SweetAlert.showMessages(base.MESSAGES_TYPE_ERROR, messages);
     }
 });
-
-LoginClass.prototype = base;
 
 var login = new LoginClass(jQuery);

@@ -3,21 +3,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class User_model extends MY_Model
 {
+    protected $table = 'users';
 
     public function __construct()
     {
         parent::__construct();
+
+        $this->loadTable($this->table);
     }
 
     public function find_all($filter, $options, $is_arr = true)
     {
         $this->db->select("*");
         $this->db->join("roles AS r", "u.idRole = r.idRole", "inner");
-        $this->db->from("users AS u");
-        $this->db->where("r.enabled", OK);
+        $this->db->from("{$this->table} AS u");
+        $this->db->where("r.enabled", SI);
 
         if ($filter->id) {
-            $this->db->like("u.id", $filter->id);
+            $this->db->where("u.id", $filter->id); 
         }
 
         if ($filter->name) {
@@ -83,15 +86,20 @@ class User_model extends MY_Model
 
     public function is_email_taken(string $email, int $id = null)
     {
-        $this->db->from("users");
+        $this->db->from($this->table);
         $this->db->where("email", $email);
 
-        if ($id) {
+        if ($id !== null) {
             $this->db->where_not_in("id", $id);
         }
 
         $conta = $this->db->count_all_results();
 
         return ($conta > 0) ? true : false;
+    }
+
+    public function is_password_match(string $password, string $user_pass)
+    {
+        return password_verify($password, $user_pass);
     }
 }

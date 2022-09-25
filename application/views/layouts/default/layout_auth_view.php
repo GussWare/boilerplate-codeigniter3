@@ -26,7 +26,13 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/css/rtl/theme-corporate.css" class="theme-settings-theme-css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/css/rtl/colors.css" class="theme-settings-colors-css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/css/rtl/uikit.css">
+
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/libs/toastr/toastr.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/libs/sweetalert2/sweetalert2.css">
+
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/demo.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/app.css">
 
     <!-- Load polyfills -->
     <script src="<?php echo base_url(); ?>assets/vendor/js/polyfills.js"></script>
@@ -114,14 +120,14 @@
                         </div>
                         <!-- / Logo -->
 
-                        <h4 class="text-center text-lighter font-weight-normal mt-5 mb-0"><?php echo lang("auth_login_yout_account");?></h4>
+                        <h4 class="text-center text-lighter font-weight-normal mt-5 mb-0"><?php echo lang("auth_login_yout_account"); ?></h4>
 
                         <!-- Form -->
                         <?php echo (isset($content_layout) ? $content_layout : ''); ?>
                         <!-- / Form -->
 
                         <div class="text-center text-muted">
-                            <?php echo lang("auth_dont_have_account_yet"); ?> <a href="javascript:void(0)"><?php echo lang("auht_sign_up"); ?></a>
+                            <?php echo lang("auth_dont_have_account_yet"); ?> <a href="<?php echo base_url("auth/register"); ?>"><?php echo lang("auht_sign_up"); ?></a>
                         </div>
 
                     </div>

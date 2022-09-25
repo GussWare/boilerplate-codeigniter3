@@ -94,21 +94,42 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 |
 */
 
-defined("OK") OR define("OK", 1);
-defined("NOT") OR define("NOT", 0);
+defined("SI") OR define("SI", 1);
+defined("NO") OR define("NO", 0);
+
 defined("DIR_APLICACION") OR define("DIR_APLICACION",  "codeigniter-mundial-football");
 defined("DOMINIO_APLICACION") OR define("DOMINIO_APLICACION", getenv("CI_DOMINIO_APLICACION"));
+
 defined("LAYOUT_DEFAULT") OR define("LAYOUT_DEFAULT", "layouts/default/");
-defined("LAYOUT_AUTH") OR define("LAYOUT_AUTH", "layouts/default/layout_auth_view");
+defined("LAYOUT_AUTH_SLIDER") OR define("LAYOUT_AUTH_SLIDER", "layouts/default/layout_auth_view");
+defined("LAYOUT_AUTH_FORM") or define("LAYOUT_AUTH_FORM", "layouts/default/layout_auth_recuperar_view");
 defined("LAYOUT_SISTEMA") OR define("LAYOUT_SISTEMA", "layout_view");
+
 defined("DIR_SERVICES") OR define("DIR_SERVICES", "services/");
-defined("DIR_VIEWMODELS") OR define("DIR_VIEWMODELS", "viewmodels/");
+defined("DIR_VIEWMODELS") OR define("DIR_VIEWMODELS", "dto/");
 defined("DIR_VALIDATORS") OR define("DIR_VALIDATORS", "validators/");
 defined("FILE_LANGUAGE") OR define("FILE_LANGUAGE", "app");
 defined("OUTPUT_CONTENT_TYPE") OR define("OUTPUT_CONTENT_TYPE", 'application/json');
+
 defined("ACTION_DEFAULT") OR define("ACTION_DEFAULT", 'index');
 defined("ACTION_CREATE") OR define("ACTION_CREATE", 'create');
 defined("ACTION_UPDATE") OR define("ACTION_UPDATE", 'update');
 defined("ACTION_REMOVE") OR define("ACTION_REMOVE", 'remove');
+
 defined("NUMBER_FORMAT") OR define("NUMBER_FORMAT", 2);
 defined("BUSQUEDA_AVANZADA") OR define("BUSQUEDA_AVANZADA", "advanced-search");
+
+defined("ROLE_REGISTER_DEFAULT") OR define("ROLE_REGISTER_DEFAULT", 1);
+
+defined("MESSAGES_TYPE_SUCCESS") OR define("MESSAGES_TYPE_SUCCESS", "success");
+defined("MESSAGES_TYPE_ERROR") OR define("MESSAGES_TYPE_ERROR", "error");
+defined("MESSAGES_TYPE_WARNING") OR define("MESSAGES_TYPE_WARNING", "warning");
+
+defined("TEXT_TITLE_SUCCESS") or define("TEXT_TITLE_SUCCESS", "Exíto");
+defined("TEXT_TITLE_ERROR") or define("TEXT_TITLE_ERROR", "Error");
+defined("TEXT_TITLE_WARNING") or define("TEXT_TITLE_WARNING", "Precaución");
+
+
+defined("MESSAGES_PLUGIN_TOAST") or define("MESSAGES_PLUGIN_TOAST", "MESSAGES_PLUGIN_TOAST");
+
+

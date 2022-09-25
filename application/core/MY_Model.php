@@ -1,4 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
+
 /**
  * Extended Model Class
  *
@@ -27,11 +30,11 @@
  * - query
  * - lastQuery
  *
- * @package		CodeIgniter
- * @subpackage	Libraries
- * @category	Libraries
- * @author		Md Emran Hasan (phpfour@gmail.com)
- * @link		http://phpfour.com
+ * @package        CodeIgniter
+ * @subpackage    Libraries
+ * @category    Libraries
+ * @author        Md Emran Hasan (phpfour@gmail.com)
+ * @link        http://phpfour.com
  */
 class MY_Model extends CI_Model
 {
@@ -105,7 +108,7 @@ class MY_Model extends CI_Model
      * @var string
      * @access public
      */
-    public $returnArray = FALSE;
+    public $returnArray = false;
 
     /**
      * Prints helpful debug messages if asked
@@ -113,7 +116,7 @@ class MY_Model extends CI_Model
      * @var string
      * @access public
      */
-    public $debug = TRUE;
+    public $debug = true;
 
     /**
      * Fields que no son llaves primarias
@@ -155,9 +158,11 @@ class MY_Model extends CI_Model
 
     public function loadTable($table, $fields = array())
     {
-        if ($this->debug) log_message('debug', "Loading model table: $table");
+        if ($this->debug) {
+            log_message('debug', "Loading model table: $table");
+        }
 
-        $this->_table  = $table;
+        $this->_table = $table;
         $this->fields = (!empty($fields)) ? $fields : $this->db->list_fields($table);
         $this->_dump_info($table);
 
@@ -174,25 +179,25 @@ class MY_Model extends CI_Model
      * @access public
      */
 
-    public function findAll($conditions = NULL, $fields = '*', $order = NULL, $start = 0, $limit = NULL, $is_array = FALSE)
+    public function findAll($conditions = null, $fields = '*', $order = null, $start = 0, $limit = null, $is_array = false)
     {
-        if ($conditions != NULL) {
+        if (null != $conditions) {
             if (is_array($conditions)) {
                 $this->db->where($conditions);
             } else {
-                $this->db->where($conditions, NULL, FALSE);
+                $this->db->where($conditions, null, false);
             }
         }
 
-        if ($fields != NULL) {
+        if (null != $fields) {
             $this->db->select($fields);
         }
 
-        if ($order != NULL) {
+        if (null != $order) {
             $this->db->order_by($order);
         }
 
-        if ($limit != NULL) {
+        if (null != $limit) {
             $this->db->limit($limit, $start);
         }
 
@@ -213,21 +218,21 @@ class MY_Model extends CI_Model
      * @access public
      */
 
-    public function find($conditions = NULL, $fields = '*', $order = NULL)
+    public function find($conditions = null, $fields = '*', $order = null)
     {
         $data = $this->findAll($conditions, $fields, $order, 0, 1);
-        
+
         return ($data) ? $data[0] : null;
     }
 
-    public function findByID($id = NULL, $fields = '*', $order = NULL)
+    public function findByID($id = null, $fields = '*', $order = null)
     {
         $data = $this->findAll(array("id" => $id), $fields, $order, 0, 1);
 
         return ($data) ? $data[0] : null;
     }
 
-    public function findByItem($item = NULL, $value=NULL, $fields = '*', $order = NULL)
+    public function findByItem($item = null, $value = null, $fields = '*', $order = null)
     {
         $data = $this->findAll(array($item => $value), $fields, $order, 0, 1);
 
@@ -242,7 +247,7 @@ class MY_Model extends CI_Model
      * @access public
      */
 
-    public function field($conditions = null, $name, $fields = '*', $order = NULL)
+    public function field($conditions = null, $name = null, $fields = '*', $order = null)
     {
         $data = $this->findAll($conditions, $fields, $order, 0, 1);
 
@@ -269,7 +274,7 @@ class MY_Model extends CI_Model
 
     public function findCount($conditions = null)
     {
-        $data = $this->findAll($conditions, 'COUNT(*) AS count', null, 0, 1, TRUE);
+        $data = $this->findAll($conditions, 'COUNT(*) AS count', null, 0, 1, true);
 
         if ($data) {
             return $data[0]['count'];
@@ -289,7 +294,7 @@ class MY_Model extends CI_Model
      * @access public
      */
 
-    public function generateList($conditions = null, $order = 'id ASC', $start = 0, $limit = NULL, $key = null, $value = null)
+    public function generateList($conditions = null, $order = 'id ASC', $start = 0, $limit = null, $key = null, $value = null)
     {
         $data = $this->findAll($conditions, "$key, $value", $order, $start, $limit);
 
@@ -308,7 +313,7 @@ class MY_Model extends CI_Model
         }
     }
 
-    public function generateArrayList($conditions = null, $order = 'id ASC', $start = 0, $limit = NULL, $value = null)
+    public function generateArrayList($conditions = null, $order = 'id ASC', $start = 0, $limit = null, $value = null)
     {
         $data = $this->findAll($conditions, "$value", $order, $start, $limit);
         if ($data) {
@@ -335,14 +340,14 @@ class MY_Model extends CI_Model
      * @access public
      */
 
-    public function generateSingleArray($conditions = null, $field = null, $order = 'id ASC', $start = 0, $limit = NULL)
+    public function generateSingleArray($conditions = null, $field = null, $order = 'id ASC', $start = 0, $limit = null)
     {
         $order = $this->primaryKey . ' ASC';
-        $data = $this->findAll($conditions, $this->primaryKey . "," . $field, $order, $start, $limit, TRUE);
+        $data = $this->findAll($conditions, $this->primaryKey . "," . $field, $order, $start, $limit, true);
 
         if ($data) {
             foreach ($data as $row) {
-                $arr[$row[$this->primaryKey]] =  $row[$field];
+                $arr[$row[$this->primaryKey]] = $row[$field];
             }
 
             return $arr;
@@ -355,7 +360,7 @@ class MY_Model extends CI_Model
      * Initializes the model for writing a new record.
      *
      * @author md emran hasan <emran@rightbrainsolution.com>
-     * @return boolean True
+     * @return boolean $this
      * @access public
      */
 
@@ -365,7 +370,7 @@ class MY_Model extends CI_Model
         unset($this->data);
 
         $this->data = array();
-        return true;
+        return $this;
     }
 
     /**
@@ -379,13 +384,13 @@ class MY_Model extends CI_Model
     public function read($id = null, $fields = null)
     {
 
-        if ($id != null) {
+        if (null != $id) {
             $this->id = $id;
         }
 
         $id = $this->id;
 
-        if ($this->id !== null && $this->id !== false) {
+        if (null !== $this->id && false !== $this->id) {
 
             $this->data = $this->find($this->primaryKey . ' = ' . $id, $fields);
             return $this->data;
@@ -404,15 +409,15 @@ class MY_Model extends CI_Model
 
     public function insert($data = null)
     {
-        if ($data == null) {
-            return FALSE;
+        if (null == $data) {
+            return false;
         }
 
         $this->data = $data;
         $this->data['create_date'] = date("Y-m-d H:i:s");
 
         foreach ($this->data as $key => $value) {
-            if (array_search($key, $this->fields) === FALSE) {
+            if (array_search($key, $this->fields) === false) {
                 unset($this->data[$key]);
             }
         }
@@ -434,7 +439,6 @@ class MY_Model extends CI_Model
     public function save($data = null, $id = null, $haveId = false)
     {
 
-
         if ($data) {
 
             if (is_object($data)) {
@@ -442,24 +446,24 @@ class MY_Model extends CI_Model
             }
             $this->data = $data;
             foreach ($this->data as $key => $value) {
-                if (array_search($key, $this->fields) === FALSE) {
+                if (array_search($key, $this->fields) === false) {
                     unset($this->data[$key]);
                 } else if ($key == $this->primaryKey) {
 
                     if (!$haveId) {
                         unset($this->data[$key]);
                     } else {
-                        $this->id = NULL;
+                        $this->id = null;
                     }
                 }
             }
 
-            if ($id != NULL) {
+            if (null != $id) {
                 $this->id = $id;
             } else {
-                $this->id = NULL;
+                $this->id = null;
             }
-            if ($this->id !== null && $this->id !== false) {
+            if (null !== $this->id && false !== $this->id) {
                 $this->db->where($this->primaryKey, $this->id);
                 $this->db->update($this->_table, $this->data);
 
@@ -483,13 +487,13 @@ class MY_Model extends CI_Model
 
     public function remove($id = null)
     {
-        if ($id != null) {
+        if (null != $id) {
             $this->id = $id;
         }
 
         $id = $this->id;
 
-        if ($this->id !== null && $this->id !== false) {
+        if (null !== $this->id && false !== $this->id) {
             if ($this->db->delete($this->_table, array($this->primaryKey => $id))) {
                 $this->id = null;
                 $this->data = array();
@@ -501,6 +505,32 @@ class MY_Model extends CI_Model
         } else {
             return false;
         }
+    }
+
+    public function enabled(int $id)
+    {
+        $data = $this->findByID($id);
+
+        if (!$data) {
+            return null;
+        }
+
+        $id = $this->save(array("enabled" => 1), $id);
+
+        return $id;
+    }
+
+    public function disabled(int $id)
+    {
+        $data = $this->findByID($id);
+
+        if (!$data) {
+            return null;
+        }
+
+        $id = $this->save(array("enabled" => 0), $id);
+
+        return $id;
     }
 
     /**
@@ -594,15 +624,13 @@ class MY_Model extends CI_Model
         return $this->__affectedRows;
     }
 
-
     public function nextId()
     {
         $this->db->select_max($this->primaryKey);
-        $sql =  $this->db->get($this->_table);
+        $sql = $this->db->get($this->_table);
         $max = $sql->result_array();
         return $max[0][$this->primaryKey] + 1;
     }
-
 
     /**
      * Carga los filtros para las busquedas dependiendo si se encuentran en el modelo
@@ -619,7 +647,7 @@ class MY_Model extends CI_Model
         }
         if ($this->attributes_names) {
             foreach ($this->attributes_names as $at) {
-                if ($values[$at] != '' and $values[$at] != null) {
+                if ('' != $values[$at] and null != $values[$at]) {
                     if (!is_numeric($values[$at])) {
                         $where .= " AND " . $this->_table . "." . $at . " like '%" . ($this->db->escape_str($values[$at])) . "%'";
                     } else {
@@ -630,11 +658,11 @@ class MY_Model extends CI_Model
         }
 
         $where = substr($where, 4, strlen($where));
-        if ($where != '') {
+        if ('' != $where) {
             $where = " AND ( $where )";
         }
 
-        if ($debug == true) {
+        if (true == $debug) {
             echo "WHERE: " . $where;
         }
         return $where;
@@ -650,10 +678,13 @@ class MY_Model extends CI_Model
     private function _dump_info($table, $schema = '')
     {
         foreach ($this->get_metadata($table) as $field) {
-            if ($field['Key'] == 'PRI') {
+            if ('PRI' == $field['Key']) {
                 $this->primaryKey = $field['Field'];
-            } else $this->non_primary[] = $field['Field'];
-            if ($field['Null'] == 'NO') {
+            } else {
+                $this->non_primary[] = $field['Field'];
+            }
+
+            if ('NO' == $field['Null']) {
                 $this->not_null[] = $field['Field'];
             }
             if ($field['Type']) {
@@ -664,7 +695,7 @@ class MY_Model extends CI_Model
         return true;
     }
 
-    function get_metadata($table = '')
+    public function get_metadata($table = '')
     {
         switch ($this->db->dbdriver) {
             case 'mssql':
@@ -687,7 +718,7 @@ class MY_Model extends CI_Model
                 $sql = " DESCRIBE " . $table;
                 break;
         }
-        $query  = $this->db->query($sql);
+        $query = $this->db->query($sql);
         return $query->result_array();
     }
 }

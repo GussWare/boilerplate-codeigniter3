@@ -1,7 +1,8 @@
-<?php 
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class LanguageHook {
-
+class LanguageHook
+{
     protected $CI;
 
     public function __construct()
@@ -10,7 +11,8 @@ class LanguageHook {
     }
 
 
-    public function load() {
+    public function load()
+    {
         $lang = $this->CI->config->item('language');
 
         $this->CI->lang->load(FILE_LANGUAGE, $lang);

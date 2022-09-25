@@ -34,3 +34,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 .htaccess
 node_modules/*
 package-lock.json
+.vscode/*
+application/cache/*
+application/logs/*

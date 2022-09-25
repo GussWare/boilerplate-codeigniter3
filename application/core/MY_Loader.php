@@ -1,23 +1,29 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class MY_Loader extends CI_Loader {
-
-
-    public function service($class, $params) {
-        $this->_load_class(DIR_SERVICES, $class, $params);
+class MY_Loader extends CI_Loader
+{
+    public function __construct()
+    {
+        parent::__construct();
     }
 
-    public function viewmodel($class, $params) {
-        $this->_load_class(DIR_VIEWMODELS, $class, $params);
+    public function service($class, $params = array())
+    {
+        return $this->_load_class(DIR_SERVICES, $class, $params);
     }
 
-    public function validator($class, $params) {
-        $this->_load_class(DIR_VALIDATORS, $class, $params);
+    public function dto($class, $params = array())
+    {
+        return $this->_load_class(DIR_VIEWMODELS, $class, $params);
     }
 
+    public function validator($class, $params = array())
+    {
+        return $this->_load_class(DIR_VALIDATORS, $class, $params);
+    }
 
-    public function _load_class($dir, $class, $params = NULL, $object_name = NULL) 
+    public function _load_class($dir, $class, $params = NULL, $object_name = NULL)
     {
         // Get the class name, and while we're at it trim any slashes.
         // The directory path can be included as part of the class name,

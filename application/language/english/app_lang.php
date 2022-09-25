@@ -8,6 +8,6 @@ $lang['auth_dont_have_account_yet'] = 'Don\'t have an account yet?';
 $lang['auht_sign_up']               = 'Sign Up';
 $lang['auth_email']                 = 'Email';
 $lang['auth_password']              = 'Password';
-$lang['auth_forgout_pass']          = 'Forgout Password?';
+$lang['auth_forgot_pass']          = 'Forgout Password?';
 $lang['auth_remember_me']           = 'Remember Me';
 $lang['auth_sign_in']               = 'Sign In';

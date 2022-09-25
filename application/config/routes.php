@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -49,16 +49,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'sistema/dashboard/index';
+$route['default_controller'] = 'dashboard/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['sistema/auth'] = 'sistema/AuthLogin/index';
-$route['sistema/auth/index'] = 'sistema/AuthLogin/index';
-$route['sistema/auth/login'] = 'sistema/AuthLogin/login';
+$route['auth']               = 'AuthLogin/index';
+$route['auth/index']["GET"]  = 'AuthLogin/index';
+$route['auth/login']["POST"] = 'AuthLogin/login';
 
-$route['sistema/dashboard'] = 'sistema/dashboard/index';
-$route['sistema/dashboard/index'] = 'sistema/dashboard/index';
+$route['auth/forgot-password']["GET"]  = 'AuthForGotPassword/index';
+$route['auth/forgot-password']["POST"] = 'AuthForGotPassword/forgotPassword';
 
-$route['sistema/users'] = 'sistema/users/index';
-$route['sistema/users/index'] = 'sistema/users/index';
+$route['auth/register']["GET"]  = 'AuthRegister/index';
+$route['auth/register']["POST"] = 'AuthRegister/register';
+
+$route['snippet/index']["GET"] = 'Snippets/index';
+
+
+$route['dashboard']["GET"]  = 'dashboard/index';
+
+$route['roles'] = 'Roles/index';
+$route['roles/index']["GET"] = 'Roles/index';
+$route['roles/export']["GET"] = 'Roles/export';
+
+

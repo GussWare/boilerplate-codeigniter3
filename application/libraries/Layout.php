@@ -4,11 +4,11 @@ class Layout
 {
 
     private $layout;
-    private $ci;
+    private $CI;
 
     public function __construct()
     {
-        $this->ci = &get_instance();
+        $this->CI = & get_instance();
         
         $this->layout = LAYOUT_DEFAULT . LAYOUT_SISTEMA;
     }
@@ -25,10 +25,10 @@ class Layout
         $params_layout = array("content_layout" => '');
 
         if($view) {
-            $params_layout['content_layout'] = $this->ci->load->view($view, $params, true);
+            $params_layout['content_layout'] = $this->CI->load->view($view, $params, true);
         }
 
-        $this->ci->load->view($this->layout, $params_layout);
+        $this->CI->load->view($this->layout, $params_layout);
 
         return $this;
     }

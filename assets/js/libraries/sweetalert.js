@@ -3,15 +3,15 @@ var ClassSweetAlert = (function($){
     var _this = this;
     
     this.success = function success(message) {
-        this.showMessage(base.MESSAGES_TYPE_SUCCESS, base.TEXT_TITLE_SUCCESS, message);
+        this.showMessage(Base.MESSAGES_TYPE_SUCCESS, Base.TEXT_TITLE_SUCCESS, message);
     };
     
     this.error = function error(message) {
-        this.showMessage(base.MESSAGES_TYPE_ERROR, base.TEXT_TITLE_ERROR, message);
+        this.showMessage(Base.MESSAGES_TYPE_ERROR, Base.TEXT_TITLE_ERROR, message);
     };
     
     this.warning = function warning(message) {
-        this.showMessage(base.MESSAGES_TYPE_WARNING, base.TEXT_TITLE_WARNING, message);
+        this.showMessage(Base.MESSAGES_TYPE_WARNING, Base.TEXT_TITLE_WARNING, message);
     };
     
     this.showMessages = function showMessages(type, messages) {
@@ -20,15 +20,38 @@ var ClassSweetAlert = (function($){
         }
     };
 
-    this.showMessage = function showMessage(type, title, msg) {
-        Swal.fire({
+    this.confirm = function confirm(title, message, fnConfirmOk, fnConfirmCancel){
+        var params = {
+            fnConfirmOk: fnConfirmOk,
+            fnConfirmCancel: fnConfirmCancel
+        };
+
+        this.showMessage(Base.MESSAGES_TYPE_WARNING, title, message, params);
+    };
+
+    this.showMessage = function showMessage(type, title, msg, params) {
+
+        var options = {
             title: title,
             text: msg,
             icon: type,
+            allowOutsideClick:true,
             showCancelButton: true,
             customClass: {
                 confirmButton: 'btn btn-danger btn-lg',
                 cancelButton: 'btn btn-default btn-lg'
+            }
+        }
+
+        Swal.fire(options).then(function(res){
+            if(res.value) {
+                if(typeof params.fnConfirmOk === "function") {
+                    params.fnConfirmOk();
+                }
+            } else {
+                if(typeof params.fnConfirmCancel === "function") {
+                    params.fnConfirmCancel();
+                }
             }
         });
     }

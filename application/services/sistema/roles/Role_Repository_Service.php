@@ -1,16 +1,20 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+require_once APPPATH . "interfaces/Repository_Interface.php";
+
 class Role_Repository_Service
 {
     protected $CI;
 
     public function __construct()
     {
-        $this->CI = &get_instance();
+        $this->CI = & get_instance();
 
+        $this->CI->load->dto('sistema/Role_Dto');
+        $this->CI->load->dto('sistema/Options_Dto');
         $this->CI->load->model("sistem/Role_model");
-        $this->CI->load->viewmodel("sistema/roles/Role_Dto");
+        $this->CI->load->library("BasicTable", null, "BasicTable");
     }
 
     public function find_all()
@@ -20,11 +24,24 @@ class Role_Repository_Service
         return $data;
     }
 
-    public function find_paginate(Role_Dto $filter, Options_Dto $options, bool $is_array = true)
+    public function find_pagination($filter, $options, $is_array = true)
     {
-        $paginate = $this->CI->Role_model->find_paginate($filter, $options, $is_array);
+        $limit = $options->limit;
+        $options->offset = ($options->page - 1) * $options->limit;
 
-        return $paginate;
+        $total_register = $this->CI->Role_model->findCount();
+        $total_pages =  ceil($total_register / $options->limit);
+
+        $results = $this->CI->Role_model->find_all($filter, $options, $is_array);
+
+        $options->limit = null;
+        $options->count = true;
+
+        $total_results = $this->CI->Role_model->find_all($filter, $options, $is_array);
+
+        $pagination = $this->CI->BasicTable->pagination($results, $options->page, $total_register, $total_results, $total_pages, $limit, $options->sortBy);
+
+        return $pagination;
     }
 
     public function find_by_id($id)
@@ -41,17 +58,53 @@ class Role_Repository_Service
         return $data;
     }
 
-    public function create(Role_Dto $role)
+    public function create(Role_Dto $body)
     {
+        $is_name_taken = $this->Role_model->is_name_taken($body->name);
+        
+        if($is_name_taken) {
+            throw new Error(lang('roles_error_name_already_taken')); 
+        }
 
+        $is_slug_taken = $this->Role_model->is_name_taken($body->slug);
+        
+        if($is_slug_taken) {
+            throw new Error(lang('roles_error_slug_already_taken')); 
+        }
+
+        $body->createdAt = date("Y-m-d H:m:s");
+
+        $result = $this->Role_model->save($body);
+
+        return $result;
     }
 
-    public function update(int $id, Role_Dto $role)
+    public function update(int $id, Role_Dto $body)
     {
+        $role = $this->find_by_id($id);
 
+        if(!$role) return null; 
+
+        $is_name_taken = $this->Role_model->is_name_taken($body->name, $id);
+        
+        if($is_name_taken) {
+            throw new Error(lang('roles_error_name_already_taken')); 
+        }
+
+        $is_slug_taken = $this->Role_model->is_slug_taken($body->slug, $id);
+        
+        if($is_slug_taken) {
+            throw new Error(lang('roles_error_slug_already_taken')); 
+        }
+
+        $body->updateAt = date("Y-m-d H:m:s");
+
+        $result = $this->Role_model->save($body, $id);
+
+        return $result;
     }
 
-    public function remove(int $id)
+    public function delete(int $id)
     {
         $response = $this->CI->Role_model->remove($id);
 

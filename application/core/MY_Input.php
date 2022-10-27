@@ -1,5 +1,5 @@
 <?php  
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MY_Input extends CI_Input {
 
@@ -30,3 +30,5 @@ class MY_Input extends CI_Input {
         return $vm;
     }
 }
+
+/* End of file MY_Input.php */

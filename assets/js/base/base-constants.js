@@ -56,6 +56,13 @@ var ClassBaseConstants = (function($) {
     this.TEXT_TITLE_SUCCESS = "";
     this.TEXT_TITLE_ERROR = "";
     this.TEXT_TITLE_WARNING = "";
+
+    this.TEXT_DELETE_CONFIRM_TITLE = "";
+    this.TEXT_DELETE_CONFIRM_QUESTION = "";
+    this.TEXT_DELETE_ACTION_CONFIRM = "";
+
+    this.TEXT_ENABLED_REGISTER = "";
+    this.TEXT_DISABLED_REGISTER = "";
 });
 
-var baseConstants = new ClassBaseConstants(jQuery);
+var BaseConstants = new ClassBaseConstants(jQuery);

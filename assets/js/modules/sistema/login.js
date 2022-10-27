@@ -19,11 +19,11 @@ var LoginClass = (function ($) {
 
         var data = $(FORM).serialize();
 
-        base.ajax(url, data, _this.successForm, _this.errorForm);
+        Base.ajax(url, data, _this.successForm, _this.errorForm);
     }
 
     this.successForm = function successForm(response) {
-        base.irDashboard();
+        Base.irDashboard();
     }
 
     this.errorForm = function errorForm(xhr, status, error) {
@@ -33,10 +33,10 @@ var LoginClass = (function ($) {
             var response = JSON.parse(xhr.responseText);
             messages = response["messages"];
         } catch (error) {
-            messages = [base.TEXT_ERROR_GENERIC];
+            messages = [Base.TEXT_ERROR_GENERIC];
         }
 
-        SweetAlert.showMessages(base.MESSAGES_TYPE_ERROR, messages);
+        SweetAlert.showMessages(Base.MESSAGES_TYPE_ERROR, messages);
     }
 });
 

@@ -5,7 +5,7 @@ var ClassMessages = (function ($) {
             return;
         }
 
-        if (flashMessage.type === base.MESSAGES_TYPE_SUCCESS) {
+        if (flashMessage.type === Base.MESSAGES_TYPE_SUCCESS) {
             Toast.showMessages(flashMessage.type, flashMessage.messages);
         } else {
             SweetAlert.showMessages(flashMessage.type, flashMessage.messages);

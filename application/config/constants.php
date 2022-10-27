@@ -105,6 +105,7 @@ defined("LAYOUT_AUTH_SLIDER") OR define("LAYOUT_AUTH_SLIDER", "layouts/default/l
 defined("LAYOUT_AUTH_FORM") or define("LAYOUT_AUTH_FORM", "layouts/default/layout_auth_recuperar_view");
 defined("LAYOUT_SISTEMA") OR define("LAYOUT_SISTEMA", "layout_view");
 
+defined("DIR_SEDDERS") OR define("DIR_SEDDERS", "sedders/");
 defined("DIR_SERVICES") OR define("DIR_SERVICES", "services/");
 defined("DIR_VIEWMODELS") OR define("DIR_VIEWMODELS", "dto/");
 defined("DIR_VALIDATORS") OR define("DIR_VALIDATORS", "validators/");
@@ -131,5 +132,8 @@ defined("TEXT_TITLE_WARNING") or define("TEXT_TITLE_WARNING", "Precaución");
 
 
 defined("MESSAGES_PLUGIN_TOAST") or define("MESSAGES_PLUGIN_TOAST", "MESSAGES_PLUGIN_TOAST");
+
+
+defined("PAGINATION_LIMIT_PER_PAGE") or define("PAGINATION_LIMIT_PER_PAGE", 20);
 
 

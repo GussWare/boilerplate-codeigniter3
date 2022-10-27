@@ -1,5 +1,5 @@
-var RolesForm = (function(e){
-    var _thisForm = this;
+var ClassRolesForm = (function($){
+    var _this = this;
 });
 
-var rolesForm = new RolesForm(jQuery);
+var Roles_Form = new ClassRolesForm(jQuery);

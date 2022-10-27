@@ -1,30 +1,49 @@
 var ClassBaseList = (function ($) {
 
-    var options = {
-        "sDom": '<"top"lf<"clear">>rt<"bottom"ip<"clear">',
-        "bSort": true,
-        "bPaginate": true,
-        "bJQueryUI": true,
-        "sPaginationType": "full_numbers",
-        "iDisplayLength": 10,
-        "bServerSide": true,
-        "bProcessing": true,
-        "aoColumns": [],
-        "sAjaxSource": "",
-        "fnServerData": function (sSource, aoData, fnCallback) {},
-        "fnRowCallback": function (nRow, aData, iDisplayIndex) {}
+    this.initListado = function initListado(module) {
+        TableRoles = $("#" + module + "-table").BasicTable({
+            "pagesContainer": "." + module + "-pages-container",
+            "template": CoreUI.BasicTable.template,
+            "templateLoading": CoreUI.BasicTable.templateLoading,
+            "templateRow": _this.templateRow,
+            "serverSide": {
+                "url": Base.BASE_URL + '' + module + '/pagination',
+                "method": "GET",
+                "advancedSearch": [
+                    "#"+module+"-advanced-search",
+                    "#"+module+"roles-frm-show",
+                    "#"+module+"roles-frm-search"
+                ],
+                "timesleep": 1000
+            },
+        });
+
+        _this.search();
     };
 
-    var ListDataTable = null;
+    this.templateRow = function templateRow(tr) {
+        var data = tr.attr("data-item");
+        data = $.parseJSON(data);
 
-    this.initList = function initList(params) {
+        var tdHabilitado = tr.find("td").eq(4);
+        var tdActions = tr.find("td").eq(5);
+        tdActions.html('');
 
-        var table = params.table;
+        // boton habilitado
+        var tdHabilitado = tr.find("td").eq(4);
+        var switcher = CoreUI.Switcher.Success(data.id, "enabled-" + data.id, "", (data.enabled == 1));
+        switcher.find("#switcher-enabled-" + data.id ).attr('onchange', 'roles.switcherChange(' + data.id + ')');
+        tdHabilitado.html(switcher);
 
-        $.merge(options, params.options);
+        // botones de acciones
+        var btnEdit = CoreUI.Buttons.BtnEdit(data.id);
+        btnEdit.attr('onclick', 'roles.editClick(' + data.id + ');')
+        btnEdit.appendTo(tdActions);
 
-        ListDataTable = $(table).dataTable(options);
-    };
+        var btnDelete = CoreUI.Buttons.BtnDelete(data.id);
+        btnDelete.attr('onclick', 'roles.deleteClick(' + data.id + ');')
+        btnDelete.appendTo(tdActions);
+    }
 
 });
 

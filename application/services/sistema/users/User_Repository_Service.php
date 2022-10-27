@@ -1,20 +1,23 @@
 <?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_Repository_Service
+require_once APPPATH . "interfaces/Repository_Interface.php";
+
+class User_Repository_Service implements Repository_Interface
 {
     protected $CI;
 
     public function __construct()
     {
-        $this->CI = & get_instance();
-        
+        $this->CI = &get_instance();
+
         $this->CI->load->model('sistema/User_model');
     }
 
-    public function find_paginate(User_Dto $filter, Options_Dto $options, bool $is_array = true)
+    public function find_pagination($filter,  $options,  $is_array = true)
     {
         $paginate = $this->CI->User_model->find_paginate($filter, $options, $is_array);
-        
+
         return $paginate;
     }
 
@@ -25,32 +28,32 @@ class User_Repository_Service
         return $response;
     }
 
-    public function find_by_id(int $id)
+    public function find_by_id($id)
     {
         $user = $this->CI->User_model->findByID($id);
 
         return $user;
     }
 
-    public function find_by_email(string $email)
+    public function find_by_email($email)
     {
         $user = $this->CI->User_model->findByItem("email", $email);
 
         return $user;
     }
 
-    public function find_by_username(string $username)
+    public function find_by_username($username)
     {
         $user = $this->CI->User_model->findByItem("username", $username);
 
         return $user;
     }
 
-    public function create(User_Dto $body)
+    public function create($body)
     {
         $is_email_taken = $this->CI->User_model->is_email_taken($body->email);
 
-        if($is_email_taken) {
+        if ($is_email_taken) {
             throw new Error(lang('users_error_email_already_taken'));
         }
 
@@ -58,24 +61,24 @@ class User_Repository_Service
         $body->createdAt    = date("Y-m-d H:m:s");
 
         $user = $this->CI->User_model->save($body);
-        
+
         return $user;
     }
 
-    public function update(int $id, User_Dto $body)
+    public function update($id, $body)
     {
         $user = $this->find_by_id($id);
 
-        if(!$user) return null;
+        if (!$user) return null;
 
         $is_email_taken = $this->CI->User_model->is_email_taken($body->email, $id);
 
-        if($body->email !== '' && $is_email_taken) {
+        if ($body->email !== '' && $is_email_taken) {
             throw new Error(lang('users_error_email_already_taken'));
         }
 
         $body->updatedAt = date("Y-m-d H:m:s");
-        
+
         $this->CI->User_model->save($body, $id);
 
         $user = $this->find_by_id($id);
@@ -83,23 +86,23 @@ class User_Repository_Service
         return $user;
     }
 
-    public function remove(int $id)
+    public function delete($id)
     {
         $user = $this->find_by_id($id);
 
-        if(!$user) return null;
-        
+        if (!$user) return null;
+
         $this->CI->User_model->where('id', $id);
         $this->CI->User_model->delete('users');
 
         return $user;
     }
 
-    public function enabled(int $id)
+    public function enabled($id)
     {
         $user = $this->find_by_id($id);
 
-        if(!$user) return null;
+        if (!$user) return null;
 
         $this->CI->User_model->where('id', $id);
         $this->CI->User_model->update('users', array(
@@ -109,7 +112,7 @@ class User_Repository_Service
         return $user;
     }
 
-    public function disabled(int $id)
+    public function disabled($id)
     {
         $user = $this->find_by_id($id);
 
@@ -123,3 +126,5 @@ class User_Repository_Service
         return $user;
     }
 }
+
+/* End of file User_Repository_Service.php */

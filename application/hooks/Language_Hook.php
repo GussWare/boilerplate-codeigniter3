@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class LanguageHook
+class Language_Hook
 {
     protected $CI;
 

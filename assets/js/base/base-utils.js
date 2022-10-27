@@ -22,20 +22,18 @@ var ClassBaseUtils = (function($) {
         CoreUI.mensajeMsgBox(this._self.TEXT_MENSAJE_ERROR_CONEXION_SERVIDOR, this.TIPO_MENSAJE_ERROR);
     };
 
-    this.numberFormat = function (input, redondear = 2) {
-        var value = $(input).val();
-
-        $(input).val(CoreUtil.format.formatNumber((value > 0) ? value : 0, "", redondear));
-    };
-
     this.ajax = function ajax(url, data, fnSuccess, fnError, method = "POST", dataType = "json") {
+
+        var err = (typeof fnError === "function") ? fnError : function(err) {
+            alert("Entro en Error :v");
+        };
 
         var params = {
             url: url,
             method: method,
             dataType: dataType,
             success: fnSuccess,
-            error: fnError,
+            error: err,
             data: data
         };
 
@@ -51,4 +49,4 @@ var ClassBaseUtils = (function($) {
     }
 });
 
-var baseUtils = new ClassBaseUtils(jQuery);
+var BaseUtils = new ClassBaseUtils(jQuery);

@@ -70,6 +70,27 @@ $route['dashboard']["GET"]  = 'dashboard/index';
 
 $route['roles'] = 'Roles/index';
 $route['roles/index']["GET"] = 'Roles/index';
+$route['roles/index']["pagination"] = 'Roles/pagination';
+$route['roles/form']["GET"] = 'Roles/form';
 $route['roles/export']["GET"] = 'Roles/export';
+$route['roles/update']['POST'] = 'Roles/update';
+$route['roles/delete']['POST'] = 'Roles/delete';
+$route['roles/enabled']['POST'] = 'Roles/enabled';
+$route['roles/disabled']['POST'] = 'Roles/disabled';
+
+
+$route['modules'] = 'Modules/index';
+$route['modules/index']["GET"] = 'Modules/index';
+$route['modules/index']["pagination"] = 'Modules/pagination';
+$route['modules/form']["GET"] = 'Modules/form';
+$route['modules/export']["GET"] = 'Modules/export';
+$route['modules/update']['POST'] = 'Modules/update';
+$route['modules/delete']['POST'] = 'Modules/delete';
+$route['modules/enabled']['POST'] = 'Modules/enabled';
+$route['modules/disabled']['POST'] = 'Modules/disabled';
+
+
+$route['sedder']["GET"]  = 'Sedder/index';
+$route['sedder/index']["GET"]  = 'Sedder/index';
 
 

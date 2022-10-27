@@ -56,7 +56,7 @@ class AuthRegister extends MY_Controller
 
         $user = $this->User_Repository_Service->create($user);
 
-        $this->session->set_flashdata('_MESSAGES', $this->flash->success(lang('register_the_user_has_been_registered')));
+        $this->session->set_flashdata('_MESSAGES', $this->flash->success(lang('register_the_user_has_been_registered'))->to_json());
 
         $this->response->send(HttpStatus::HTTP_OK, $response);
     }

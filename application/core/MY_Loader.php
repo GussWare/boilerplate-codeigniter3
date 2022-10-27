@@ -18,6 +18,11 @@ class MY_Loader extends CI_Loader
         return $this->_load_class(DIR_VIEWMODELS, $class, $params);
     }
 
+    public function sedder($class, $params = array())
+    {
+        return $this->_load_class(DIR_SEDDERS, $class, $params);
+    }
+
     public function validator($class, $params = array())
     {
         return $this->_load_class(DIR_VALIDATORS, $class, $params);

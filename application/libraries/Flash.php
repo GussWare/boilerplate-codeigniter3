@@ -13,28 +13,21 @@ class Flash
     {
         $this->set_messages(MESSAGES_TYPE_SUCCESS, $message);
 
-        $messages = $this->to_json();
-
-        return $messages;
+        return $this;
     }
 
     public function error($message)
     {
         $this->set_messages(MESSAGES_TYPE_ERROR, $message);
 
-        $messages = $this->to_json();
-
-        return $messages;
+        return $this;
     }
 
     public function warning($message)
     {
         $this->set_messages(MESSAGES_TYPE_WARNING, $message);
 
-        $messages = $this->to_json();
-
-        return $messages;
-
+        return $this;
     }
 
     public function set_messages($type, $message)
@@ -45,15 +38,16 @@ class Flash
             "type"      => $type,
             "messages"  => $messages
         );
-    }
 
-    public function get_messages()
-    {
-        return $this->messages;
+        return $this;
     }
 
     public function to_json()
     {
         return json_encode($this->messages);
+    }
+
+    public function to_array() {
+        return $this->messages;
     }
 }

@@ -64,9 +64,9 @@
                         email: true
                     }
                 },
-                errorPlacement: CoreUI.validationErrorPlacement,
-                highlight: CoreUI.validationHighlight,
-                unhighlight: CoreUI.validationUnhighlight
+                errorPlacement: CoreUI.FormValidate.validationErrorPlacement,
+                highlight: CoreUI.FormValidate.validationHighlight,
+                unhighlight: CoreUI.FormValidate.validationUnhighlight
             }
         });
 

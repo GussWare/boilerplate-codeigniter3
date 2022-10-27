@@ -9,8 +9,9 @@ var ClassBaseForm = (function($){
     };
 
     this.save = function () {
+        
     };
 
 });
 
-var baseForm = new ClassBaseForm(jQuery);
+var BaseForm = new ClassBaseForm(jQuery);

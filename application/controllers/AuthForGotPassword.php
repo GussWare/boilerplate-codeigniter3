@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 use Lukasoppermann\Httpstatus\Httpstatuscodes as HttpStatus;
 
@@ -46,7 +46,7 @@ class AuthForGotPassword extends MY_Controller
 
         $this->Auth_Service->forgot_password($email);
 
-        $this->session->set_flashdata('_MESSAGES', $this->flash->success(lang('forgot_sent_to_recover_pass')));
+        $this->session->set_flashdata('_MESSAGES', $this->flash->success(lang('forgot_sent_to_recover_pass'))->to_array());
 
         $this->response->send(HttpStatus::HTTP_NO_CONTENT);
     }

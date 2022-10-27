@@ -1,3 +1,11 @@
 div#alert-messages .alert ul li {
     color: #d74949;
 }
+
+.buttons-pagination {
+    padding: 0px 10px 0px 10px;
+}
+
+.btn-grid-search {
+    margin-left: 5px !important;
+}

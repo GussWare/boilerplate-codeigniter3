@@ -4,6 +4,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $lang['general_days']       = "['Do','Lu','Ma','Mi','Ju','Vi','Sa']";
 $lang['general_mounths']    = "['Ene', 'Feb', 'Mar', 'Abr','May', 'Jun', 'Jul', 'Ago','Sep', 'Oct', 'Nov', 'Dic']";
 
+
+$lang['general_text_delete_confirm_title'] = 'Eliminar registro';
+$lang['general_text_delete_confirm_question'] = '¿En verdad desea eliminar el registro con %s \"%d\" ?';
+$lang['general_text_delete_action_confirm'] = 'Registro Eliminado.';
+
+$lang['general_text_enabled_register'] = "El registro se ha habilitado";
+$lang['general_text_disabled_register'] = "El registro se ha deshabilitado";
+$lang['general_text_show'] = "Mostrar";
+$lang['general_text_search'] = "Buscar";
+
+$lang['genera_text_no_hay_registros'] = "No hay registros.";
+
+
+$lang['general_data'] = "Datos Generales";
+
 $lang['text_error_generic'] = 'Se sucito un error mientras realizaba la operación. Si el problema persiste notifique al administrador.';
 
 $lang['actions_send']       = "Enviar";
@@ -15,6 +30,9 @@ $lang['actions_buscar']     = "Búscar";
 $lang['actions_advanced_search'] = 'Búsqueda Avanzada';
 $lang['actions_actions'] = 'Acciones';
 
+
+$lang['actions_save_changes'] = 'Guardar Cambios';
+$lang['actions_cancel'] = 'Cancelar';
 
 $lang['auth_title'] = 'Login';
 $lang['auth_forgot'] = 'Recuperar';
@@ -57,3 +75,23 @@ $lang['roles_name'] = 'Nombre';
 $lang['roles_slug'] = 'Slug';
 $lang['roles_description'] = 'Descripción';
 $lang['roles_enabled'] = 'Habilitado';
+
+$lang['roles_crear_rol'] = 'Nuevo Rol';
+
+$lang['actions_list'] = "Listado de Acciones";
+$lang['actions_id'] = "Id";
+$lang['actions_name'] = "Nombre";
+$lang['actions_slug'] = "Slug";
+$lang['actions_description'] = "Descripción";
+$lang['actions_enabled'] = "Habilitado";
+$lang['actions_add_action'] = 'Agregar Acción';
+
+
+$lang['modules_list'] = 'Listado de Modulos';
+$lang['modules_title'] = 'Modulos';
+$lang['modules_name'] = 'Nombre';
+$lang['modules_slug'] = 'Slug';
+$lang['modules_description'] = 'Descripción';
+$lang['modules_enabled'] = 'Habilitado';
+
+$lang['modules_crear_module'] = 'Nuevo Modulo';

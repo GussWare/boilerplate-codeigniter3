@@ -33,7 +33,6 @@
 <script type="text/javascript">
     $(document).ready(function() {
 
-        
         login.initForm({
             form: {
                 ignore: '.ignore, .select2-input',
@@ -47,13 +46,11 @@
                         email: true
                     }
                 },
-                errorPlacement: CoreUI.validationErrorPlacement,
-                highlight: CoreUI.validationHighlight,
-                unhighlight: CoreUI.validationUnhighlight
+                errorPlacement: CoreUI.FormValidate.validationErrorPlacement,
+                highlight: CoreUI.FormValidate.validationHighlight,
+                unhighlight: CoreUI.FormValidate.validationUnhighlight
             }
         });
-        
-
 
         $("#form-login").submit(login.login);
     });

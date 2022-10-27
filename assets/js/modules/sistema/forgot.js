@@ -19,17 +19,17 @@ var ForGotClass = (function ($) {
 
         var data = $(FORM).serialize();
 
-        base.ajax(url, data, _this.successForm, _this.errorForm);
+        Base.ajax(url, data, _this.successForm, _this.errorForm);
     };
 
     this.successForm = function successForm(response) {
-        base.irLogin();
+        Base.irLogin();
     };
 
     this.errorForm = function errorForm(xhr, status, error) {
-        var errors = (base.isValidJSON(xhr.responseText)) ? JSON.parse(xhr.responseText)["messages"] : [base.TEXT_ERROR_GENERIC];
+        var errors = (Base.isValidJSON(xhr.responseText)) ? JSON.parse(xhr.responseText)["messages"] : [Base.TEXT_ERROR_GENERIC];
 
-        Alerts.showMessages(base.MESSAGES_TYPE_ERROR, errors);
+        Alerts.showMessages(Base.MESSAGES_TYPE_ERROR, errors);
     };
 });
 

@@ -9,15 +9,15 @@ var ClassToast = (function ($) {
     };
 
     this.success = function success(message) {
-        this.showToast(base.MESSAGES_TYPE_SUCCESS, base.TEXT_TITLE_SUCCESS, message);
+        this.showToast(Base.MESSAGES_TYPE_SUCCESS, Base.TEXT_TITLE_SUCCESS, message);
     };
 
     this.error = function error(message) {
-        this.showToast(base.MESSAGES_TYPE_ERROR, base.TEXT_TITLE_ERROR, message);
+        this.showToast(Base.MESSAGES_TYPE_ERROR, Base.TEXT_TITLE_ERROR, message);
     };
 
     this.warning = function warning(message) {
-        this.showToast(base.MESSAGES_TYPE_WARNING, base.TEXT_TITLE_WARNING, message);
+        this.showToast(Base.MESSAGES_TYPE_WARNING, Base.TEXT_TITLE_WARNING, message);
     };
 
     this.showToast = function showToast(type, title, msg) {

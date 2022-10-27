@@ -18,6 +18,14 @@ class Role_model extends MY_Model
         $this->db->select("*");
         $this->db->from("roles as r");
 
+        if($filter->name) {
+            $this->db->where("name", $filter->name);
+        }
+
+        if($filter->slug) {
+            $this->db->where("slug", $filter->slug);
+        }
+
         if ($options->limit && $options->offset) {
             $this->db->limit($options->limit, $options->offset);
         } else {
@@ -36,6 +44,12 @@ class Role_model extends MY_Model
             }
         }
 
+        if($options->search) {
+            $this->db->like("name", $options->search);
+            $this->db->or_like("slug", $options->search);
+            $this->db->or_like("description", $options->search);
+        }
+
         if ($options->count) {
             return $this->db->count_all_results();
         }
@@ -50,6 +64,33 @@ class Role_model extends MY_Model
         }
 
         return $data;
+    }
 
+    public function is_name_taken($name, $id = null)
+    {
+        $this->db->from($this->table);
+        $this->db->where("name", $name);
+
+        if ($id !== null) {
+            $this->db->where_not_in("id", $id);
+        }
+
+        $conta = $this->db->count_all_results();
+
+        return ($conta > 0) ? true : false;
+    }
+
+    public function is_slug_taken($slug, $id = null)
+    {
+        $this->db->from($this->table);
+        $this->db->where("slug", $slug);
+
+        if ($id !== null) {
+            $this->db->where_not_in("id", $id);
+        }
+
+        $conta = $this->db->count_all_results();
+
+        return ($conta > 0) ? true : false;
     }
 }

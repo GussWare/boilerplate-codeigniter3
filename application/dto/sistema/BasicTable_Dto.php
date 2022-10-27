@@ -8,6 +8,7 @@ class BasicTable_Dto
     public $limit;
     public $totalPages;
     public $totalResults;
+    public $totalRegister;
     public $sortBy;
 }
 

@@ -1,6 +1,9 @@
 var ClassBase = (function ($) {
     
     this._self = this;
+
+
+    this.CRUD = null;
 });
 
-var base = new ClassBase(jQuery);
+var Base = new ClassBase(jQuery);

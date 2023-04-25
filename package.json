@@ -18,6 +18,12 @@
   "homepage": "https://github.com/GussWare/boilerplate-codeigniter3#readme",
   "dependencies": {
     "axios": "^1.1.3",
-    "paginationjs": "^2.1.5"
+    "dayjs": "^1.11.6",
+    "jquery-form": "^4.3.0",
+    "jquery-validation": "^1.19.5",
+    "plugin-basic-messages": "^1.0.1",
+    "plugin-basic-pagination": "^3.0.0",
+    "short-uuid": "^4.2.2",
+    "underscore": "^1.13.6"
   }
 }

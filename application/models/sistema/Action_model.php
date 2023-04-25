@@ -68,4 +68,18 @@ class Action_model extends MY_Model
 
         return $data;
     }
+
+
+    public function create_batch($data) 
+    {
+        $result = $this->db->insert_batch("actions", $data);
+
+        return $result;
+    }
+
+    public function delete_by_module($module_id)
+    {
+        $this->db->where("idModule", $module_id);
+        $this->db->delete("actions");
+    }
 }

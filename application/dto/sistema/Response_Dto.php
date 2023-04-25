@@ -2,6 +2,6 @@
 
 class Response_Dto
 {
-    public int $code;
+    public string $code;
     public array $messages = array();
 }

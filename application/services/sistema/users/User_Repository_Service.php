@@ -14,7 +14,7 @@ class User_Repository_Service implements Repository_Interface
         $this->CI->load->model('sistema/User_model');
     }
 
-    public function find_pagination($filter,  $options,  $is_array = true)
+    public function find_paginate($filter,  $options,  $is_array = true)
     {
         $paginate = $this->CI->User_model->find_paginate($filter, $options, $is_array);
 

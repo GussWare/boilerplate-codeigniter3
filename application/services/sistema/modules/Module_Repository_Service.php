@@ -2,10 +2,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 require_once APPPATH . "interfaces/Repository_Interface.php";
+require_once APPPATH . "services/sistema/actions/Action_Repository_Service.php";
 
 class Module_Repository_Service
 {
     protected $CI;
+    protected $Action_Repository_Service;
 
     public function __construct()
     {
@@ -15,6 +17,9 @@ class Module_Repository_Service
         $this->CI->load->dto('sistema/Options_Dto');
         $this->CI->load->model("sistem/Module_model");
         $this->CI->load->library("BasicTable", null, "BasicTable");
+
+
+        $this->Action_Repository_Service = new Action_Repository_Service();
     }
 
     public function find_all()
@@ -24,7 +29,7 @@ class Module_Repository_Service
         return $data;
     }
 
-    public function find_pagination($filter, $options, $is_array = true)
+    public function find_paginate($filter, $options, $is_array = true)
     {
         $limit = $options->limit;
         $options->offset = ($options->page - 1) * $options->limit;
@@ -75,6 +80,15 @@ class Module_Repository_Service
         $body->createdAt = date("Y-m-d H:m:s");
 
         $result = $this->Module_model->save($body);
+
+        /*
+        if($result) {
+            $module = $this->find_by_id();
+
+            $this->Action_Repository_Service->delete_by_module($module->id);
+            $this->Action_Repository_Service->create_batch($body["actions"]);
+        }
+        */
 
         return $result;
     }

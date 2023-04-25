@@ -16,30 +16,4 @@
 
 <!-- Core scripts -->
 <?php $this->load->view("scripts_view");  ?>
-
-<?php echo script_tag('assets/vendor/libs/validate/validate.js'); ?>
-<?php echo script_tag('assets/js/plugins/ajaxForm/jquery.ajaxForm.js'); ?>
 <?php echo script_tag('assets/js/modules/sistema/forgot.js'); ?>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        forgot.initForm({
-            form: {
-                ignore: '.ignore, .select2-input',
-                focusInvalid: false,
-                rules: {
-                    email: {
-                        required: true,
-                        email: true
-                    }
-                },
-                errorPlacement: CoreUI.FormValidate.validationErrorPlacement,
-                highlight: CoreUI.FormValidate.validationHighlight,
-                unhighlight: CoreUI.FormValidate.validationUnhighlight
-            }
-        });
-
-
-        $("#form-forgot").submit(forgot.forgotPassword);
-    });
-</script>

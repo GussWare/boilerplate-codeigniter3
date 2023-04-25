@@ -46,7 +46,7 @@ class Auth_Service
         $user = $this->User_Repository_Service->find_by_email($email);
 
         if (!$user || !$user->enabled) {
-            throw new Error();
+            throw new Exception(lang("users_error_user_not_found"));
         }        
 
         $this->ForgotPassword_Email->send($user);

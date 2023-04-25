@@ -18,3 +18,19 @@ $hook['post_controller_constructor'][] = array(
     'filepath' => 'hooks',
     'params'   => array()
 );
+
+$hook['pre_controller_constructor'][] = array(
+    'class'    => 'Security_Hook',
+    'function' => 'check',
+    'filename' => 'Security_Hook.php',
+    'filepath' => 'hooks',
+    'params'   => array()
+);
+
+$hook['post_controller_constructor'][] = array(
+    'class'    => 'Middelware_Hook',
+    'function' => 'call',
+    'filename' => 'Middelware_Hook.php',
+    'filepath' => 'hooks',
+    'params'   => array()
+);

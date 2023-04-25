@@ -122,10 +122,6 @@ defined("BUSQUEDA_AVANZADA") OR define("BUSQUEDA_AVANZADA", "advanced-search");
 
 defined("ROLE_REGISTER_DEFAULT") OR define("ROLE_REGISTER_DEFAULT", 1);
 
-defined("MESSAGES_TYPE_SUCCESS") OR define("MESSAGES_TYPE_SUCCESS", "success");
-defined("MESSAGES_TYPE_ERROR") OR define("MESSAGES_TYPE_ERROR", "error");
-defined("MESSAGES_TYPE_WARNING") OR define("MESSAGES_TYPE_WARNING", "warning");
-
 defined("TEXT_TITLE_SUCCESS") or define("TEXT_TITLE_SUCCESS", "Exíto");
 defined("TEXT_TITLE_ERROR") or define("TEXT_TITLE_ERROR", "Error");
 defined("TEXT_TITLE_WARNING") or define("TEXT_TITLE_WARNING", "Precaución");
@@ -137,3 +133,11 @@ defined("MESSAGES_PLUGIN_TOAST") or define("MESSAGES_PLUGIN_TOAST", "MESSAGES_PL
 defined("PAGINATION_LIMIT_PER_PAGE") or define("PAGINATION_LIMIT_PER_PAGE", 20);
 
 
+
+defined("CODE_TYPE_SUCCESS") or define("CODE_TYPE_SUCCESS", "success");
+defined("CODE_TYPE_ERROR") or define("CODE_TYPE_ERROR", "error");
+defined("CODE_TYPE_WARNING") or define("CODE_TYPE_WARNING", "warning");
+defined("CODE_TYPE_INFO") or define("CODE_TYPE_INFO", "info");
+
+
+defined("MODULES_SLUG") or define("MODULES_SLUG", "modules");

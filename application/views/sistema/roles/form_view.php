@@ -1,10 +1,14 @@
 <h4 class="d-flex justify-content-between align-items-center w-100 font-weight-bold py-3 mb-4">
-    <div> <span class="text-muted font-weight-light"><?php echo lang('roles_title'); ?> /</span><?php echo lang('roles_crear_rol'); ?> </div>
-    <a href="<?php echo base_url('roles/index'); ?>" type="button" class="btn btn-secondary rounded-pill d-block"><span class="ion ion-md-arrow-back"></span>&nbsp;
-        <?php echo lang('roles_list') ?></a>
+    <div> 
+        <span class="text-muted font-weight-light"><?php echo lang('roles_title'); ?> /</span><?php echo lang('roles_crear_rol'); ?> 
+    </div>
+    <a href="<?php echo base_url('roles/index'); ?>" type="button" class="btn btn-secondary rounded-pill d-block">
+        <span class="ion ion-md-arrow-back"></span>&nbsp;
+        <?php echo lang('roles_list') ?>
+    </a>
 </h4>
 
-<form>
+<form id="form-roles">
     <div class="card mb-4">
         <h6 class="card-header">
             <?php echo lang('general_data'); ?>

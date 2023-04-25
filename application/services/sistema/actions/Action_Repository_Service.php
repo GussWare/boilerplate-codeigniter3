@@ -23,6 +23,11 @@ class Action_Repository_Service
 
         return $data;
     }
+
+    public function create_batch($data) 
+    {
+        $this->CI->Action_model->create_batch($data);
+    }
 }
 
 /* End of file Role_Service.php */

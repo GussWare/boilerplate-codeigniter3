@@ -12,7 +12,7 @@ class Response
 
     public function send($status, $data = array(), $output = OUTPUT_CONTENT_TYPE)
     {
-       $this->CI->output->set_content_type($output) 
+       $this->CI->output->set_content_type("application/json") 
             ->set_status_header($status)
             ->set_output(json_encode($data));
     }

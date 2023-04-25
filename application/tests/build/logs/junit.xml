@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.600910">
+    <testsuite name="CodeIgniter Application Test Suite" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.600910">
+      <testsuite name="AuthLogin_test" file="E:\SOFT-FACTORY\PROYECTOS\PHP-PROYECTS\boilerplate-codeigniter3\application\tests\controllers\sistema\AuthLogin_test.php" tests="2" assertions="3" errors="0" warnings="0" failures="0" skipped="0" time="0.600910">
+        <testcase name="test_index" class="AuthLogin_test" classname="AuthLogin_test" file="E:\SOFT-FACTORY\PROYECTOS\PHP-PROYECTS\boilerplate-codeigniter3\application\tests\controllers\sistema\AuthLogin_test.php" line="9" assertions="2" time="0.066172"/>
+        <testcase name="test_login" class="AuthLogin_test" classname="AuthLogin_test" file="E:\SOFT-FACTORY\PROYECTOS\PHP-PROYECTS\boilerplate-codeigniter3\application\tests\controllers\sistema\AuthLogin_test.php" line="21" assertions="1" time="0.534738"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

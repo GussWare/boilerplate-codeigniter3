@@ -24,7 +24,7 @@ class Role_Repository_Service
         return $data;
     }
 
-    public function find_pagination($filter, $options, $is_array = true)
+    public function find_paginate($filter, $options, $is_array = true)
     {
         $limit = $options->limit;
         $options->offset = ($options->page - 1) * $options->limit;

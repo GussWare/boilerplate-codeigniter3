@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 require APPPATH . 'interfaces/Validation_Interface.php';
 
-class Role_Validation implements Validation_Interface
+class Module_Validation implements Validation_Interface
 {
     protected $CI;
 
@@ -16,20 +16,22 @@ class Role_Validation implements Validation_Interface
 
     public function validate()
     {
-        $this->CI->form_validation->set_rules("name", lang("roles_name"), array(
+        $this->CI->form_validation->set_rules("name", lang("modules_name"), array(
             'required',
             'max_length(255)',
         ));
 
-        $this->CI->form_validation->set_rules("slug", lang("roles_slug"), array(
+        $this->CI->form_validation->set_rules("slug", lang("modules_slug"), array(
             'required',
             'max_length(255)',
         ));
 
-        $this->CI->form_validation->set_rules("description", lang("roles_description"), array(
+        $this->CI->form_validation->set_rules("description", lang("modules_description"), array(
             'required',
             'max_length(255)',
         ));
+
+        $this->CI->form_validation->set_rules("modules_actions", lang("modules_actions"), array());
 
         $validate = $this->CI->form_validation->run();
 
@@ -42,4 +44,4 @@ class Role_Validation implements Validation_Interface
     }
 }
 
-/* End of file Role_Validation.php */
+/* End of file Module_Validation.php */

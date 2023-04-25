@@ -8,4 +8,5 @@ class Module_Dto
     public $description;
     public $slug;
     public $enabled;
+    public $actions = [];
 }

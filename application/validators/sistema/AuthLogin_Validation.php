@@ -9,7 +9,7 @@ class AuthLogin_Validation implements Validation_Interface
 
     public function __construct()
     {
-        $this->CI = & get_instance();
+        $this->CI = &get_instance();
         $this->CI->load->library("form_validation");
     }
 

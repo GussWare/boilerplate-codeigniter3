@@ -1,38 +1,63 @@
-var RegisterClass = (function ($) {
+$(function () {
+    
+    class Register {
 
-    var _this = this;
-    var FORM = '#form-register';
-
-    this.initForm = function initForm(params) {
-        $(FORM).validate(params.form);
-    }
-
-    this.register = function register(e) {
-        e.preventDefault();
-
-        var url = $(FORM).attr("action");
-        var validate = $(FORM).valid();
-
-        if (!validate) {
-            return false;
+        constructor(){
+            this.FORM_ID = "#form-register";
+            this.FORM_OBJ = null;
+            
+            this.initForm();
         }
 
-        var data = $(FORM).serialize();
+        initForm() {
+            var self = this;
+            var formOptions = optionsFormValidate.getOptions({
+                rules: {
+                    name: {
+                        minlength:3,
+                        maxlength:250,
+                        required: true,
+                    },
+                    surname: {
+                        minlength:3,
+                        maxlength:250,
+                        required: true,
+                    },
+                    username: {
+                        minlength:3,
+                        maxlength:250,
+                        required: true,
+                    },
+                    password: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                }
+            });
 
-        Base.ajax(url, data, _this.successForm, _this.errorForm);
+            // self.FORM_OBJ = $(self.FORM_ID).validate(formOptions);
+
+            $(self.FORM_ID).ajaxForm({
+                method: "POST",
+                beforeSubmit: function () {
+                    /*
+                    var valid = self.FORM_OBJ.valid();
+                    return valid;
+                    */
+                },
+                success: function (response) {
+                    utils.irLogin();
+                },
+                error: function (e) {
+                    var response = JSON.parse(e.responseText);
+                    $.BasicMessage.error([response.messages]);
+                }
+            });
+        }
     }
 
-    this.successForm = function successForm(response) {
-        Alerts.clearMessages();
-        
-        Base.irLogin();
-    }
-
-    this.errorForm = function errorForm(xhr, status, error) {
-        var errors = (Base.isValidJSON(xhr.responseText)) ? JSON.parse(xhr.responseText)["messages"] : [Base.TEXT_ERROR_GENERIC];
-
-        Alerts.showMessages(Base.MESSAGES_TYPE_ERROR, errors);
-    }
+    const register = new Register();
 });
-
-var register = new RegisterClass(jQuery);

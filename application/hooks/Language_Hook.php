@@ -10,7 +10,6 @@ class Language_Hook
         $this->CI = &get_instance();
     }
 
-
     public function load()
     {
         $lang = $this->CI->config->item('language');

@@ -53,44 +53,45 @@ $route['default_controller'] = 'dashboard/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['auth']               = 'AuthLogin/index';
-$route['auth/index']["GET"]  = 'AuthLogin/index';
-$route['auth/login']["POST"] = 'AuthLogin/login';
+$route['auth']               = 'sistema/AuthLogin/index';
+$route['auth/index']["GET"]  = 'sistema/AuthLogin/index';
+$route['auth/login']["POST"] = 'sistema/AuthLogin/login';
 
-$route['auth/forgot-password']["GET"]  = 'AuthForGotPassword/index';
-$route['auth/forgot-password']["POST"] = 'AuthForGotPassword/forgotPassword';
+$route['auth/forgot']["GET"]  = 'sistema/AuthForGotPassword/index';
+$route['auth/forgot-password']["POST"] = 'sistema/AuthForGotPassword/forgotPassword';
 
-$route['auth/register']["GET"]  = 'AuthRegister/index';
-$route['auth/register']["POST"] = 'AuthRegister/register';
+$route['auth/register']["GET"]  = 'sistema/AuthRegister/index';
+$route['auth/register-user']["POST"] = 'sistema/AuthRegister/register';
 
 $route['snippet/index']["GET"] = 'Snippets/index';
 
-
 $route['dashboard']["GET"]  = 'dashboard/index';
 
-$route['roles'] = 'Roles/index';
-$route['roles/index']["GET"] = 'Roles/index';
-$route['roles/index']["pagination"] = 'Roles/pagination';
-$route['roles/form']["GET"] = 'Roles/form';
-$route['roles/export']["GET"] = 'Roles/export';
-$route['roles/update']['POST'] = 'Roles/update';
-$route['roles/delete']['POST'] = 'Roles/delete';
-$route['roles/enabled']['POST'] = 'Roles/enabled';
-$route['roles/disabled']['POST'] = 'Roles/disabled';
+$route['roles'] = 'sistema/Roles/index';
+$route['roles/index']["GET"] = 'sistema/Roles/index';
+$route['roles/pagination']["GET"] = 'sistema/Roles/pagination';
+$route['roles/form']["GET"] = 'sistema/Roles/form';
+$route['roles/export']["GET"] = 'sistema/Roles/export';
+$route['roles/update']['POST'] = 'sistema/Roles/update';
+$route['roles/delete']['POST'] = 'sistema/Roles/delete';
+$route['roles/enabled']['POST'] = 'sistema/Roles/enabled';
+$route['roles/disabled']['POST'] = 'sistema/Roles/disabled';
 
 
-$route['modules'] = 'Modules/index';
-$route['modules/index']["GET"] = 'Modules/index';
-$route['modules/index']["pagination"] = 'Modules/pagination';
-$route['modules/form']["GET"] = 'Modules/form';
-$route['modules/export']["GET"] = 'Modules/export';
-$route['modules/update']['POST'] = 'Modules/update';
-$route['modules/delete']['POST'] = 'Modules/delete';
-$route['modules/enabled']['POST'] = 'Modules/enabled';
-$route['modules/disabled']['POST'] = 'Modules/disabled';
+$route['modules'] = 'sistema/Modules/index';
+$route['modules/index']["GET"] = 'sistema/Modules/index';
+$route['modules/pagination']["GET"] = 'sistema/Modules/pagination';
+$route['modules/form']["GET"] = 'sistema/Modules/form';
+$route['modules/export']["GET"] = 'sistema/Modules/export';
+
+$route['modules/create']['POST'] = 'sistema/Modules/create';
+$route['modules/update']['PUT'] = 'sistema/Modules/update';
+$route['modules/delete']['DELETE'] = 'sistema/Modules/delete';
+$route['modules/enabled']['POST'] = 'sistema/Modules/enabled';
+$route['modules/disabled']['POST'] = 'sistema/Modules/disabled';
 
 
-$route['sedder']["GET"]  = 'Sedder/index';
-$route['sedder/index']["GET"]  = 'Sedder/index';
+$route['sedder']["GET"]  = 'sistema/Sedder/index';
+$route['sedder/index']["GET"]  = 'sistema/Sedder/index';
 
 

@@ -47,6 +47,19 @@ var ClassBaseUtils = (function($) {
 
         return isValidJSON;
     }
+
+    this.serializeToJSON = function serializeToJSON(arr) {
+
+        console.log(arr);
+
+        var params = {};
+
+        arr.forEach(function (element) {
+            params[element.name] = element.value 
+        });
+
+        return params;
+    }
 });
 
 var BaseUtils = new ClassBaseUtils(jQuery);

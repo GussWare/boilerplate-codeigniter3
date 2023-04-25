@@ -16,7 +16,8 @@
 		"shrikeh/teapot": "^2.3",
 		"symfony/password-hasher": "^6.0",
 		"tecnickcom/tcpdf": "^6.5",
-		"setasign/fpdf": "^1.8"		
+		"setasign/fpdf": "^1.8",
+		"kenjis/ci-phpunit-test": "^3.0"		
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
@@ -35,6 +36,7 @@
 	},
 	"require-dev": {
 		"fakerphp/faker": "^1.20",
-		"yidas/codeigniter-phpunit": "^1.1"
+		"yidas/codeigniter-phpunit": "^1.1",
+		"phpunit/phpunit": "^9.6"
 	}
 }

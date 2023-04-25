@@ -1,42 +1,40 @@
-var ClassRecuperar = (function($) {
+class Recuperar {
 
-    var _self = this;
-    var FORM = '#form-recuperar';
+    constructor() {
+        this.FORM_ID = "#form-forgot";
+        this.FORM_OBJ = null;
 
-    this.initForm = function initForm(params) {
-        console.table(params);
-        $(FORM).validate(params.form);
+        this.initForm();
     }
 
-    this.recuperar = function recuperar() {
-        var validate = $(FORM).valid();
-        if (validate) {
-            var params = {
-                dataType: "json",
-                resetForm: true,
-                success: _self.recuperarSuccess,
-                error: _self.recuperarError
-            };
-            $(FORM).ajaxForm(params);
-            $(FORM).submit();
-        }
+    initForm() {
+        var self = this;
+        var formOptions = optionsFormValidate.getOptions({
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                }
+            }
+        });
+
+        self.FORM_OBJ = $(self.FORM_ID).validate(formOptions);
+
+        $(self.FORM_ID).ajaxForm({
+            method: "POST",
+            beforeSubmit: function () {
+                var valid = self.FORM_OBJ.valid();
+                return valid;
+            },
+            success: function (response) {
+                utils.irLogin();
+            },
+            error: function (e) {
+                var response = JSON.parse(e.responseText);
+                $.BasicMessage.error([response.messages]);
+            }
+        });
     }
+}
 
-    this.recuperarSuccess = function recuperarSuccess(response, status, xhr, form) {
-        console.log(response);
-        console.log(status);
-        console.log(xhr);
-        console.log(form);
-    }
-
-    this.recuperarError = function recuperarError(response, status, xhr, form) {
-        console.log(response);
-        console.log(status);
-        console.log(xhr);
-        console.log(form);
-    }
-});
-
-ClassRecuperar.prototype = base;
-
-var recuperar = new ClassRecuperar(jQuery);
+const recuperar = new Recuperar();

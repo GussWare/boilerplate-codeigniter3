@@ -11,21 +11,21 @@ class Flash
 
     public function success($message)
     {
-        $this->set_messages(MESSAGES_TYPE_SUCCESS, $message);
+        $this->set_messages(CODE_TYPE_SUCCESS, $message);
 
         return $this;
     }
 
     public function error($message)
     {
-        $this->set_messages(MESSAGES_TYPE_ERROR, $message);
+        $this->set_messages(CODE_TYPE_ERROR, $message);
 
         return $this;
     }
 
     public function warning($message)
     {
-        $this->set_messages(MESSAGES_TYPE_WARNING, $message);
+        $this->set_messages(CODE_TYPE_WARNING, $message);
 
         return $this;
     }
@@ -35,7 +35,7 @@ class Flash
         $messages = (is_array($message)) ? $message : array($message);
 
         $this->messages = array(
-            "type"      => $type,
+            "code"      => $type,
             "messages"  => $messages
         );
 

@@ -22,6 +22,7 @@ $lang['general_data'] = "Datos Generales";
 $lang['text_error_generic'] = 'Se sucito un error mientras realizaba la operación. Si el problema persiste notifique al administrador.';
 
 $lang['actions_send']       = "Enviar";
+$lang['actions_select']       = "Seleccione";
 $lang['actions_new']        = "Nuevo";
 $lang['actions_edit']       = "Editar";
 $lang['actions_delete']     = "Borrar";
@@ -29,6 +30,9 @@ $lang['actions_update']     = "Actualizar";
 $lang['actions_buscar']     = "Búscar";
 $lang['actions_advanced_search'] = 'Búsqueda Avanzada';
 $lang['actions_actions'] = 'Acciones';
+$lang['actions_actions'] = 'Acciones';
+
+$lang['actions_create_new'] = 'Crear Nuevo';
 
 
 $lang['actions_save_changes'] = 'Guardar Cambios';
@@ -76,13 +80,16 @@ $lang['roles_slug'] = 'Slug';
 $lang['roles_description'] = 'Descripción';
 $lang['roles_enabled'] = 'Habilitado';
 
-$lang['roles_crear_rol'] = 'Nuevo Rol';
+$lang['roles_create_rol'] = 'Crear Role';
 
 $lang['actions_list'] = "Listado de Acciones";
 $lang['actions_id'] = "Id";
 $lang['actions_name'] = "Nombre";
+$lang['actions_name_placeholder'] = "Nombre de la Acción";
 $lang['actions_slug'] = "Slug";
+$lang['actions_slug_placeholder'] = "Nombre interno de la acción";
 $lang['actions_description'] = "Descripción";
+$lang['actions_description_placeholder'] = "Descripción breve de la Acción";
 $lang['actions_enabled'] = "Habilitado";
 $lang['actions_add_action'] = 'Agregar Acción';
 
@@ -90,8 +97,11 @@ $lang['actions_add_action'] = 'Agregar Acción';
 $lang['modules_list'] = 'Listado de Modulos';
 $lang['modules_title'] = 'Modulos';
 $lang['modules_name'] = 'Nombre';
+$lang['modules_name_placeholder'] = 'Nombre del Módulo';
 $lang['modules_slug'] = 'Slug';
+$lang['modules_slug_placeholder'] = 'Nombre interno otorgado para el sistema';
 $lang['modules_description'] = 'Descripción';
+$lang['modules_description_placeholder'] = 'Descripción breve del Módulo';
 $lang['modules_enabled'] = 'Habilitado';
 
 $lang['modules_crear_module'] = 'Nuevo Modulo';

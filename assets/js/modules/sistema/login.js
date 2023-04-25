@@ -1,43 +1,46 @@
-var LoginClass = (function ($) {
+$(function () {
+    
+    class Login {
 
-    var _this = this;
-    var FORM = '#form-login';
-
-    this.initForm = function initForm(params) {
-        $(FORM).validate(params.form);
-    }
-
-    this.login = function login(e) {
-        e.preventDefault();
-
-        var url = $(FORM).attr("action");
-        var validate = $(FORM).valid();
-
-        if (!validate) {
-            return false;
+        constructor(){
+            this.FORM_ID = "#form-login";
+            this.FORM_OBJ = null;
+            
+            this.initForm();
         }
 
-        var data = $(FORM).serialize();
+        initForm() {
+            var self = this;
+            var formOptions = optionsFormValidate.getOptions({
+                rules: {
+                    password: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                }
+            });
 
-        Base.ajax(url, data, _this.successForm, _this.errorForm);
-    }
-
-    this.successForm = function successForm(response) {
-        Base.irDashboard();
-    }
-
-    this.errorForm = function errorForm(xhr, status, error) {
-        var messages = [];
-
-        try {
-            var response = JSON.parse(xhr.responseText);
-            messages = response["messages"];
-        } catch (error) {
-            messages = [Base.TEXT_ERROR_GENERIC];
+            self.FORM_OBJ = $(self.FORM_ID).validate(formOptions);
+            
+            $(self.FORM_ID).ajaxForm({
+                method: "POST",
+                beforeSubmit: function () {
+                    var valid = self.FORM_OBJ.valid();
+                    return valid;
+                },
+                success: function (response) {
+                   utils.irDashboard();
+                },
+                error: function (e) {
+                    var response = JSON.parse(e.responseText);
+                    $.BasicMessage.error([response.messages]);
+                }
+            });
         }
-
-        SweetAlert.showMessages(Base.MESSAGES_TYPE_ERROR, messages);
     }
+
+    const login = new Login();
 });
-
-var login = new LoginClass(jQuery);

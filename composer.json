@@ -14,10 +14,11 @@
 		"php": ">=5.3.7",
 		"lukasoppermann/http-status": "^3.2",
 		"shrikeh/teapot": "^2.3",
-		"symfony/password-hasher": "^6.0",
 		"tecnickcom/tcpdf": "^6.5",
 		"setasign/fpdf": "^1.8",
-		"kenjis/ci-phpunit-test": "^3.0"		
+		"kenjis/ci-phpunit-test": "^3.0",
+		"symfony/password-hasher": "*",
+		"guzzlehttp/guzzle": "*"		
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
@@ -36,7 +37,6 @@
 	},
 	"require-dev": {
 		"fakerphp/faker": "^1.20",
-		"yidas/codeigniter-phpunit": "^1.1",
 		"phpunit/phpunit": "^9.6"
 	}
 }
